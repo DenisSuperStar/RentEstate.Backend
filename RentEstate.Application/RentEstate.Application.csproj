@@ -7,8 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\Estate\House\Queries\" />
-    <Folder Include="Entities\Estate\PartOfHouse\Queries\" />
     <Folder Include="Entities\Estate\Room\Queries\" />
     <Folder Include="Entities\Estate\Tawnhouse\Queries\" />
   </ItemGroup>
