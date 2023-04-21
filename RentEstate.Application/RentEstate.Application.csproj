@@ -7,9 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\Estate\BedPlace\Queries\" />
-    <Folder Include="Entities\Estate\Cottage\Queries\" />
-    <Folder Include="Entities\Estate\Flat\Queries\" />
     <Folder Include="Entities\Estate\House\Queries\" />
     <Folder Include="Entities\Estate\PartOfHouse\Queries\" />
     <Folder Include="Entities\Estate\Room\Queries\" />
@@ -17,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="MediatR" Version="12.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
   </ItemGroup>
