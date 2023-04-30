@@ -20,8 +20,8 @@ namespace RentEstate.Application.Entities.Estate.Room.Commands.CreateRoom
         public string? VideoUrl { get; set; }
         public string? TitleAd { get; set; }
         public string? DescriptionAd { get; set; }
-        public int? Payment { get; set; }
-        public int? PaymentOwner { get; set; }
+        public int Payment { get; set; }
+        public int PaymentOwner { get; set; }
         public bool IsPaymentOwner { get; set; }
         public string? PaymentEarly { get; set; }
         public bool IsFridge { get; set; }
@@ -39,7 +39,7 @@ namespace RentEstate.Application.Entities.Estate.Room.Commands.CreateRoom
         public bool IsPenthouse { get; set; }
         public bool IsElevator { get; set; }
         public int ElevatorsCount { get; set; }
-        public int? TotalArea { get; set; }
+        public int TotalArea { get; set; }
         public int Floor { get; set; }
         public int FloorsInHouse { get; set; }
         public bool IsFurniture { get; set; }

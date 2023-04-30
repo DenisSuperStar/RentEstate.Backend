@@ -1,11 +1,9 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using RentEstate.Application.Common.Mappings;
-using RentEstate.Application.Entities.Estate.Tawnhouse.Queries;
 
-namespace RentEstate.Application.Entities.Estate.PartOfHouse.Queries
+namespace RentEstate.Application.Entities.Estate.Room.Queries.RoomListQuery
 {
-    public class PartOfHouseListDto : IMapWith<Domain.PartOfHouse>
+    public class RoomListDTO : IMapWith<Domain.Room>
     {
         public Guid Id { get; set; } //*
         public DateTime? Publish { get; set; } //*
@@ -15,7 +13,6 @@ namespace RentEstate.Application.Entities.Estate.PartOfHouse.Queries
         public bool HasPrivate { get; set; } //*
         public bool AllowPet { get; set; } //*
         public bool AllowChildren { get; set; } //*
-        public bool HasKitchen { get; set; }
         public bool Repair { get; set; }
         public string? Type { get; set; }
         public string? Video { get; set; }
@@ -27,34 +24,35 @@ namespace RentEstate.Application.Entities.Estate.PartOfHouse.Queries
         public string? PayEarly { get; set; }
         public bool HasFridge { get; set; }
         public bool HasDishwasher { get; set; }
-        public bool HasWashmachine { get; set; }
+        public bool HasWashMachine { get; set; }
         public bool HasTV { get; set; }
         public bool HasTelephone { get; set; }
         public bool HasInternet { get; set; }
         public bool HasBathroom { get; set; } //*
-        public bool HasShower { get; set; } //*
-        public string? Address { get; set; } //*
-        public string? LandPlotNumber { get; set; }
-        public string? CottageVillageNumber { get; set; }
-        public DateOnly? BuildingYear { get; set; }
-        public string? ConstructMaterial { get; set; }
-        public int Area { get; set; }
-        public int Floor { get; set; }
-        public int Bedrooms { get; set; }
-        public bool HasToiletRoom { get; set; } //*
         public bool HasShowerRoom { get; set; } //*
-        public string? Heated { get; set; } //*
-        public bool FurnitureRooms { get; set; } //*
-        public bool FurnitureKitchen { get; set; } //*
-        public bool Garage { get; set; }
-        public bool Pool { get; set; }
-        public bool PieceForRent { get; set; }
-        public bool SelfEmployed { get; set; }
-
+        public string? Address { get; set; } //*
+        public bool HasFlat { get; set; }
+        public bool HasApartments { get; set; }
+        public int Rooms { get; set; } //*
+        public bool HasPenthouse { get; set; }
+        public bool HasElevator { get; set; } //*
+        public int Elevators { get; set; }
+        public int Area { get; set; }
+        public int LivingFloor { get; set; } //*
+        public int Floors { get; set; }
+        public bool HasFurniture { get; set; } //*
+        public bool HasViewToYard { get; set; }
+        public bool HasViewToStreet { get; set; }
+        public bool HasBalcony { get; set; } //*
+        public bool HasLoggia { get; set; } //*
+        public bool HasSeparateBathroom { get; set; }
+        public bool HasRampant { get; set; }
+        public bool HasChute { get; set; }
+        public string? CarsParking { get; set; }
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Domain.PartOfHouse, PartOfHouseListDto>()
+            profile.CreateMap<Domain.Room, RoomListDTO>()
                 .ForMember(search => search.Id, option => option.MapFrom(src => src.EstateId))
                 .ForMember(search => search.Publish, option => option.MapFrom(src => src.DatePublish))
                 .ForMember(search => search.HasOwner, option => option.MapFrom(src => src.IsRent))
@@ -63,7 +61,6 @@ namespace RentEstate.Application.Entities.Estate.PartOfHouse.Queries
                 .ForMember(search => search.HasPrivate, option => option.MapFrom(src => src.IsCommercial))
                 .ForMember(search => search.AllowPet, option => option.MapFrom(src => src.IsPet))
                 .ForMember(search => search.AllowChildren, option => option.MapFrom(src => src.IsChildren))
-                .ForMember(search => search.HasKitchen, option => option.MapFrom(src => src.IsKitchen))
                 .ForMember(search => search.Repair, option => option.MapFrom(src => src.HasRepair))
                 .ForMember(search => search.Type, option => option.MapFrom(src => src.RepairType))
                 .ForMember(search => search.Video, option => option.MapFrom(src => src.VideoUrl))
@@ -75,29 +72,31 @@ namespace RentEstate.Application.Entities.Estate.PartOfHouse.Queries
                 .ForMember(search => search.PayEarly, option => option.MapFrom(src => src.PaymentEarly))
                 .ForMember(search => search.HasFridge, option => option.MapFrom(src => src.IsFridge))
                 .ForMember(search => search.HasDishwasher, option => option.MapFrom(src => src.IsDishwasher))
-                .ForMember(search => search.HasWashmachine, option => option.MapFrom(src => src.IsWashMachine))
+                .ForMember(search => search.HasWashMachine, option => option.MapFrom(src => src.IsWashMachine))
                 .ForMember(search => search.HasTV, option => option.MapFrom(src => src.IsTV))
                 .ForMember(search => search.HasTelephone, option => option.MapFrom(src => src.IsTelephone))
                 .ForMember(search => search.HasInternet, option => option.MapFrom(src => src.IsInternet))
                 .ForMember(search => search.HasBathroom, option => option.MapFrom(src => src.IsBathroom))
-                .ForMember(search => search.HasShower, option => option.MapFrom(src => src.IsShower))
+                .ForMember(search => search.HasShowerRoom, option => option.MapFrom(src => src.IsShower))
                 .ForMember(search => search.Address, option => option.MapFrom(src => src.Address))
-                .ForMember(search => search.LandPlotNumber, option => option.MapFrom(src => src.LandPlotNumber))
-                .ForMember(search => search.CottageVillageNumber, option => option.MapFrom(src => src.CottageVillageNumber))
-                .ForMember(search => search.BuildingYear, option => option.MapFrom(src => src.ConstructYear))
-                .ForMember(search => search.ConstructMaterial, option => option.MapFrom(src => src.HouseMaterial))
-                .ForMember(search => search.Area, option => option.MapFrom(src => src.HouseArea))
-                .ForMember(search => search.Floor, option => option.MapFrom(src => src.FloorCount))
-                .ForMember(search => search.Bedrooms, option => option.MapFrom(src => src.BedroomNumber))
-                .ForMember(search => search.HasToiletRoom, option => option.MapFrom(src => src.ToiletOutdoors))
-                .ForMember(search => search.HasShowerRoom, option => option.MapFrom(src => src.ShowerOutdoors))
-                .ForMember(search => search.Heated, option => option.MapFrom(src => src.Heating))
-                .ForMember(search => search.FurnitureRooms, option => option.MapFrom(src => src.HasFurnitureInRooms))
-                .ForMember(search => search.FurnitureKitchen, option => option.MapFrom(src => src.HasFurnitureKitchen))
-                .ForMember(search => search.Garage, option => option.MapFrom(src => src.HasGarage))
-                .ForMember(search => search.Pool, option => option.MapFrom(src => src.HasPool))
-                .ForMember(search => search.PieceForRent, option => option.MapFrom(src => src.PartForRent))
-                .ForMember(search => search.SelfEmployed, option => option.MapFrom(src => src.HasSelfEmployed));
+                .ForMember(search => search.HasFlat, option => option.MapFrom(src => src.IsFlat))
+                .ForMember(search => search.HasApartments, option => option.MapFrom(src => src.IsApartments))
+                .ForMember(search => search.Rooms, option => option.MapFrom(src => src.CountRooms))
+                .ForMember(search => search.HasPenthouse, option => option.MapFrom(src => src.IsPenthouse))
+                .ForMember(search => search.HasElevator, option => option.MapFrom(src => src.IsElevator))
+                .ForMember(search => search.Elevators, option => option.MapFrom(src => src.ElevatorsCount))
+                .ForMember(search => search.Area, option => option.MapFrom(src => src.TotalArea))
+                .ForMember(search => search.LivingFloor, option => option.MapFrom(src => src.Floor))
+                .ForMember(search => search.Floors, option => option.MapFrom(src => src.FloorsInHouse))
+                .ForMember(search => search.HasFurniture, option => option.MapFrom(src => src.IsFurniture))
+                .ForMember(search => search.HasViewToYard, option => option.MapFrom(src => src.HasWindowToYard))
+                .ForMember(search => search.HasViewToStreet, option => option.MapFrom(src => src.HasWindowToStreet))
+                .ForMember(search => search.HasBalcony, option => option.MapFrom(src => src.IsBalcony))
+                .ForMember(search => search.HasLoggia, option => option.MapFrom(src => src.IsLoggia))
+                .ForMember(search => search.HasSeparateBathroom, option => option.MapFrom(src => src.IsSeparatedBathroom))
+                .ForMember(search => search.HasRampant, option => option.MapFrom(src => src.IsRampant))
+                .ForMember(search => search.HasChute, option => option.MapFrom(src => src.IsGarbageChute))
+                .ForMember(search => search.CarsParking, option => option.MapFrom(src => src.Parking));
         }
     }
 }

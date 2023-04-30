@@ -16,11 +16,11 @@ namespace RentEstate.Domain
         public int HouseArea { get; set; }
         public int FloorCount { get; set; }
         public int BedroomNumber { get; set; }
-        public bool Outdoors { get; set; }
+        public bool ToiletOutdoors { get; set; }
+        public bool ShowerOutdoors { get; set; }
         public string? Heating { get; set; }
         public bool HasFurnitureInRooms { get; set; }
         public bool HasFurnitureKitchen { get; set; }
-        public bool HasBathOutdoors { get; set; }
         public bool HasGarage { get; set; }
         public bool HasPool { get; set; }
     }

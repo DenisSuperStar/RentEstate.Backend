@@ -4,7 +4,7 @@ namespace RentEstate.Application.Entities.Estate.Tawnhouse.Commands.CreateTawnho
 {
     public class CreateTawnhouseCommand : IRequest<Guid>
     {
-        public Guid UserId { get; set; }
+        
         public Guid EstateId { get; set; }
         public DateTime? DatePublish { get; set; }
         public bool IsPublish { get; set; }
@@ -40,11 +40,11 @@ namespace RentEstate.Application.Entities.Estate.Tawnhouse.Commands.CreateTawnho
         public int HouseArea { get; set; }
         public int FloorCount { get; set; }
         public int BedroomNumber { get; set; }
-        public bool Outdoors { get; set; }
-        public string? Heating { get; set; }
+        public bool ToiletOutdoors { get; set; }
+        public bool ShowerOutdoors { get; set; }
+        public string? Heated { get; set; }
         public bool HasFurnitureInRooms { get; set; }
         public bool HasFurnitureKitchen { get; set; }
-        public bool HasBathOutdoors { get; set; }
         public bool HasGarage { get; set; }
         public bool HasPool { get; set; }
         public bool HasSelfEmployed { get; set; }

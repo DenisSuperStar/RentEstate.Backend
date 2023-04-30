@@ -1,11 +1,9 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using RentEstate.Application.Common.Mappings;
-using RentEstate.Application.Entities.Estate.Tawnhouse.Queries;
 
-namespace RentEstate.Application.Entities.Estate.PartOfHouse.Queries
+namespace RentEstate.Application.Entities.Estate.Tawnhouse.Queries
 {
-    public class PartOfHouseListDto : IMapWith<Domain.PartOfHouse>
+    public class TawnhouseListDTO : IMapWith<Domain.Tawnhouse>
     {
         public Guid Id { get; set; } //*
         public DateTime? Publish { get; set; } //*
@@ -48,13 +46,12 @@ namespace RentEstate.Application.Entities.Estate.PartOfHouse.Queries
         public bool FurnitureKitchen { get; set; } //*
         public bool Garage { get; set; }
         public bool Pool { get; set; }
-        public bool PieceForRent { get; set; }
         public bool SelfEmployed { get; set; }
 
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Domain.PartOfHouse, PartOfHouseListDto>()
+            profile.CreateMap<Domain.Tawnhouse, TawnhouseListDTO>()
                 .ForMember(search => search.Id, option => option.MapFrom(src => src.EstateId))
                 .ForMember(search => search.Publish, option => option.MapFrom(src => src.DatePublish))
                 .ForMember(search => search.HasOwner, option => option.MapFrom(src => src.IsRent))
@@ -96,7 +93,6 @@ namespace RentEstate.Application.Entities.Estate.PartOfHouse.Queries
                 .ForMember(search => search.FurnitureKitchen, option => option.MapFrom(src => src.HasFurnitureKitchen))
                 .ForMember(search => search.Garage, option => option.MapFrom(src => src.HasGarage))
                 .ForMember(search => search.Pool, option => option.MapFrom(src => src.HasPool))
-                .ForMember(search => search.PieceForRent, option => option.MapFrom(src => src.PartForRent))
                 .ForMember(search => search.SelfEmployed, option => option.MapFrom(src => src.HasSelfEmployed));
         }
     }

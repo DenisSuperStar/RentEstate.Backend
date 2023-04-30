@@ -15,7 +15,6 @@ namespace RentEstate.Application.Entities.Estate.Tawnhouse.Commands.CreateTawnho
 
             var tawnHouse = new Domain.Tawnhouse
             {
-                UserId = request.UserId,
                 EstateId = Guid.NewGuid(),
                 DatePublish = DateTime.UtcNow,
                 IsPublish = request.IsPublish,
@@ -50,11 +49,11 @@ namespace RentEstate.Application.Entities.Estate.Tawnhouse.Commands.CreateTawnho
                 HouseArea = request.HouseArea,
                 FloorCount = request.FloorCount,
                 BedroomNumber = request.BedroomNumber,
-                Outdoors = request.Outdoors,
+                ToiletOutdoors = request.ToiletOutdoors,
+                ShowerOutdoors = request.ShowerOutdoors,
                 Heating = request.Heating,
                 HasFurnitureInRooms = request.HasFurnitureInRooms,
                 HasFurnitureKitchen = request.HasFurnitureKitchen,
-                HasBathOutdoors = request.HasBathOutdoors,
                 HasGarage = request.HasGarage,
                 HasPool = request.HasPool,
                 HasSelfEmployed = request.HasSelfEmployed
