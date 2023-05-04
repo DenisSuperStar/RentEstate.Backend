@@ -2,12 +2,15 @@
 using RentEstate.Domain;
 using RentEstate.Application.Entities.Interfaces;
 using RentEstate.Persistance.EntityTypeConfiguration;
+using System.Configuration;
 
 namespace RentEstate.Persistance
 {
 
-    internal class EstateDbContext : DbContext, IEstateDbContext
+    public class EstateDbContext : DbContext, IEstateDbContext
     {
+        private const string EstateDBConnection = "Server=(localdb)\\mssqllocaldb;Database=Estate;Trusted_Connection=True;";
+
         public DbSet<BedPlace> BedPlaces { get; set; }
         public DbSet<Cottage> Cottages { get; set; }
         public DbSet<Estate> Estates { get; set; }
@@ -16,6 +19,10 @@ namespace RentEstate.Persistance
         public DbSet<PartOfHouse> PartOfHouses { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Tawnhouse> Tawnhouses { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
+            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings[EstateDBConnection].ConnectionString);
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.ApplyConfiguration(new BedPlaceConfiguration());
