@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RentEstate.Application\RentEstate.Application.csproj" />
     <ProjectReference Include="..\RentEstate.Domain\RentEstate.Domain.csproj" />
   </ItemGroup>
